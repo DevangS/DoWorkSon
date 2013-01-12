@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112042254) do
+ActiveRecord::Schema.define(:version => 20130112061738) do
 
   create_table "chores", :force => true do |t|
     t.string   "name"
     t.time     "time"
-    t.date     "startDate"
+    t.date     "start_date"
     t.boolean  "monday"
     t.boolean  "tuesday"
     t.boolean  "wednesday"

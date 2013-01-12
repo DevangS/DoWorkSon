@@ -2,7 +2,7 @@ class Chore < ActiveRecord::Base
   belongs_to :currentPerson, :class_name => "person"
   has_many :people, :dependent => :destroy
   accepts_nested_attributes_for :people, allow_destroy: true
-  attr_accessible :people_attributes,:time_reminded,:time_completed, :description, :friday, :monday, :name, :saturday, :startDate, :sunday, :thursday, :time, :tuesday, :wednesday
+  attr_accessible :people_attributes,:time_reminded,:time_completed, :description, :friday, :monday, :name, :saturday, :start_date, :sunday, :thursday, :time, :tuesday, :wednesday
   
   validates :name, :length => { :maximum =>30 }
   validate :one_day_must_be_set
@@ -39,7 +39,12 @@ end
   end
   
   def self.find_chores  
-      now = Time.now
+      t= Time.now
+      day = t.strftime('%A').downcase
+      hours_ago = t - 12.hours
+      pre_time = Time.gm(2000,1,1,0,0,0) + t.min.minutes + t.sec.seconds - 1.hour
+      chores = Chore.where(day+" AND time_completed < ? and time > ? AND start_date >= ?",hours_ago,pre_time,t)
+      
 
   end
                       
