@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112061738) do
+ActiveRecord::Schema.define(:version => 20130112080801) do
 
   create_table "chores", :force => true do |t|
     t.string   "name"
@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(:version => 20130112061738) do
     t.string   "email"
     t.string   "phone"
     t.integer  "chore_id"
-    t.integer  "order"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "ordering_number"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "people", ["chore_id"], :name => "index_people_on_chore_id"
