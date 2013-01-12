@@ -20,13 +20,15 @@
 
 .hero-unit
 {
-  height: 500px;
   background-color: transparent;
 
 }
 
 .page-content
 {
+  width: 700px;
+  height: 500px;
   background-image: url("hand-holding-whip-hi.png");
   background-repeat: no-repeat;
+  background-position: 0px 0px;
 }

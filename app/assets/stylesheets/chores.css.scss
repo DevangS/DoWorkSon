@@ -11,7 +11,7 @@
 .new_chores_title
 {
   text-align:center;
-  width: 300px;
+  width: 500px;
   padding-bottom: 30px;
 }
 
@@ -22,5 +22,12 @@
 
 .field_with_errors
 {
+  background-color: red;
+  padding: 7px 2px 9px 2px;
   display: inline;
+}
+
+.item
+{
+  padding-bottom: 7px;
 }
