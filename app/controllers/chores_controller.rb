@@ -14,6 +14,7 @@ class ChoresController < ApplicationController
   # GET /chores/1.json
   def show
     @chore = Chore.find(params[:id])
+    @daynames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
     respond_to do |format|
       format.html # show.html.erb

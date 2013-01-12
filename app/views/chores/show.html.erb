@@ -1,65 +1,93 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @chore.name %>
-</p>
-
-<p>
-  <b>Time:</b>
-  <%= @chore.time %>
-</p>
-
-<p>
-  <b>Startdate:</b>
-  <%= @chore.start_date %>
-</p>
-
-<p>
-  <b>Monday:</b>
-  <%= @chore.monday %>
-</p>
-
-<p>
-  <b>Tuesday:</b>
-  <%= @chore.tuesday %>
-</p>
-
-<p>
-  <b>Wednesday:</b>
-  <%= @chore.wednesday %>
-</p>
-
-<p>
-  <b>Thursday:</b>
-  <%= @chore.thursday %>
-</p>
-
-<p>
-  <b>Friday:</b>
-  <%= @chore.friday %>
-</p>
-
-<p>
-  <b>Saturday:</b>
-  <%= @chore.saturday %>
-</p>
-
-<p>
-  <b>Sunday:</b>
-  <%= @chore.sunday %>
-</p>
-
-<p>
-  <b>Currentperson:</b>
-  <%= @chore.currentPerson %>
-</p>
-
-<p>
-  <b>Description:</b>
+  <h1><%= @chore.name %></h1>
   <%= @chore.description %>
-</p>
 
+<div class="container">
+  <div class="row schedule">
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.wday] %>
+        <%= Date.today.strftime("%m/%d/%U") %>
+      </div>
+      <div class="bottom">
+        Andrew
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.wday%7] %>
+        <%= Date.today.tomorrow.strftime("%m/%d/%U") %>
+      </div>
+      <div class="bottom">
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.tomorrow.wday%7] %>
+        <%= Date.today.tomorrow.tomorrow.strftime("%m/%d/%U") %>
+      </div>
+      <div class="bottom">
+        
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.wday%7] %>
+        <%= Date.today.tomorrow.tomorrow.tomorrow.strftime("%m/%d/%U") %>
+      </div>
+      <div class="bottom">
+        Devin
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.wday%7] %>
+        <%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%m/%d/%U") %>
+      </div>
+      <div class="bottom">
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday%7] %>
+        <%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%m/%d/%U") %>
+      </div>
+      <div class="bottom">
+        Devang
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday%7] %>
+        <%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%m/%d/%U") %>
+      </div>
+      <div class="bottom">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h4>Notes</h4>
+
+<div class="note">
+<div class="lines"></div>
+<ul class="list">
+  <li>Eat Breakfeast</li>
+  <li>Feed Pugsly, the cow</li>
+  <li>Sit Down</li>
+  <li>Eat lunch</li>
+  <li>Call mom</li>
+  <li>Tweet about feeding my cow, pugsly</li>
+  <li>Join a hangout in google+</li>
+  <li>Prepare Dinner</li>
+  <li>Eat Dinner</li>
+  <li>Get ready for bed</li>
+  <li>Go to bed</li>
+</ul>
+</div>
 
 <%= link_to 'Edit', edit_chore_path(@chore) %> |
+<%= link_to 'Delete', @chore, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', chores_path %>
