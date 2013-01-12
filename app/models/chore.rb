@@ -12,7 +12,6 @@ class Chore < ActiveRecord::Base
 
     def init
       t= Time.now
-      self.name  ||= "A Chore"
       self.time_completed  ||= t -1.day
       self.time_reminded ||= t - 1.day
       self.currentPerson = self.people.first
