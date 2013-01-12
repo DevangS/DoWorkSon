@@ -1,3 +1,19 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script>
+$(function() {
+  $("#days_of_week").find("input:checkbox").toggle(
+    function() { 
+      $("."+$(this).attr("id")).css('background-color', 'greenyellow'); 
+      $(this).attr('checked', 'checked');
+    },
+    function() { 
+      $("."+$(this).attr("id")).css('background-color', 'transparent'); 
+      $(this).removeAttr('checked');
+    }
+  ); 
+});
+</script>
+
 <%= form_for(@chore) do |f| %>
   <% if @chore.errors.any? %>
     <div id="error_explanation">
@@ -14,42 +30,42 @@
   <div class="form-horizontal"> 
   
     <div class="control-group">  
-      <label class="control-label" for="name">Name</label>  
+      <label class="control-label strong" for="name">Name</label>  
       <div class="controls">  
         <%= f.text_field :name, :class => "span3" %>
       </div>  
     </div>  
     <div class="control-group">
-      <label class="control-label" for="description">Description</label>
+      <label class="control-label strong" for="description">Description</label>
       <div class="controls">
         <%= f.text_area :description, {:class => "span3", :rows => "4"} %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="notify_time">Start Date</label>
+      <label class="control-label strong" for="notify_time">Start Date</label>
       <div class="controls">
         <%= f.date_select :startDate %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="notify_time">Time of Reminder</label>
+      <label class="control-label strong" for="notify_time">Time of Reminder</label>
       <div class="controls">
         <%= f.time_select :time %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="days_of_week">Days of the Week</label>
+      <label class="control-label strong" for="days_of_week">Days of the Week</label>
       <div class="controls">
         <table class="table" id="days_of_week">
           <thead>
             <tr>
-              <td>Sun</td>
-              <td>Mon</td>
-              <td>Tues</td>
-              <td>Wed</td>
-              <td>Thurs</td>
-              <td>Fri</td>
-              <td>Sat</td>
+              <td class="chore_sunday">Sunday</td>
+              <td class="chore_monday">Monday</td>
+              <td class="chore_tuesday">Tuesday</td>
+              <td class="chore_wednesday">Wednesday</td>
+              <td class="chore_thursday">Thursday</td>
+              <td class="chore_friday">Friday</td>
+              <td class="chore_saturday">Saturday</td>
             </tr>
           </thead>
           <tbody>
@@ -67,18 +83,20 @@
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label">People</label>
+      <label class="control-label strong">People</label>
       <div class="controls">
         <div class="people">
           <div class="items">
           <%= f.nested_fields_for :people do |f| %>
             <fieldset class="item">
-              Name: <%= f.text_field :name %>
-              Email: <%= f.text_field :email %>
-              Phone: <%= f.text_field :phone %>
+              Name:
+              <%= f.text_field :name %>
+              Email:
+              <%= f.text_field :email %>
+              Phone:
+              <%= f.text_field :phone %>
 
               <a href="#" class="remove">remove</a>
-
               <%= f.hidden_field :id %>
               <%= f.hidden_field :_destroy %>
             </fieldset>
