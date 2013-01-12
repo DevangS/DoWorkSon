@@ -24,12 +24,9 @@ end
 
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
-<<<<<<< HEAD
 gem 'twilio-ruby'
-
-=======
 gem 'awesome_nested_fields'
->>>>>>> dcc0c5f825094cfaf09c4ae3cc323e9bbf649bfc
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
