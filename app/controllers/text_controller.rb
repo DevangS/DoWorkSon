@@ -9,4 +9,9 @@ class TextController < ApplicationController
     handle_reply(from_number, message_body)
     render json: {}
   end
+
+  def remind
+    send_reminders
+    render json: { message:"~The whip has been cracked~"}
+  end
 end

@@ -4,7 +4,8 @@ DoWorkSon::Application.routes.draw do
   
   root :to => "page#home"
   match "video" => "page#video"
-
+  match "crack" => "text#remind"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
