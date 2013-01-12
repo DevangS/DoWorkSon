@@ -4,8 +4,9 @@
 
 #days_of_week td
 {
-  border: 3px solid white;
+  border: 3px solid transparent;
   text-align: center;
+  padding: 0x;
 }
 
 .new_chores_title
@@ -129,3 +130,26 @@
 .table-striped tbody > tr:nth-child(even) > th {
   background-color: #FFFFFF;
 }
+
+#days_of_week tr,
+#days_of_week td
+{
+  padding: 0px;
+}
+
+#days_of_week button
+{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  margin: 0px;
+}
+
+.days_button
+{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  margin: 0px;
+}
+

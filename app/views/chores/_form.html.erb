@@ -1,19 +1,31 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 <script>
 $(function() {
-  $("#days_of_week").find("input:checkbox").each(function() {
+  /*$("#days_of_week").find("input:checkbox").each(function() {
     if($(this).is(':checked')) {
       $("."+$(this).attr("id")).css('background-color', 'greenyellow'); 
     }
+  });*/
+  updateColors();
+  $("#days_of_week button").attr("href", "#");
+  
+  $("#days_of_week button").click(function() {
+    var checkbox = $("#"+$(this).attr("class"));
+    checkbox.click();
+    updateColors();
+    return false;
   });
 
-  $("#days_of_week").find("input:checkbox").click(function() {
-    if($(this).is(':checked')) {
-      $("."+$(this).attr("id")).css('background-color', 'greenyellow'); 
-    } else {
-      $("."+$(this).attr("id")).css('background-color', 'transparent'); 
-    }
-  }); 
+  function updateColors() {
+    $("#days_of_week").find("input:checkbox").each(function() {
+      if($(this).is(':checked')) {
+        $("."+$(this).attr("id")).css('background-color', 'greenyellow'); 
+      } else {
+        $("."+$(this).attr("id")).css('background-color', 'white'); 
+      }
+    });
+  }
+
 });
 </script>
 
@@ -63,16 +75,16 @@ $(function() {
         <table class="table" id="days_of_week">
           <thead>
             <tr>
-              <td class="chore_sunday">Sunday</td>
-              <td class="chore_monday">Monday</td>
-              <td class="chore_tuesday">Tuesday</td>
-              <td class="chore_wednesday">Wednesday</td>
-              <td class="chore_thursday">Thursday</td>
-              <td class="chore_friday">Friday</td>
-              <td class="chore_saturday">Saturday</td>
+              <td><button class="chore_sunday">Sunday</button></td>
+              <td><button class="chore_monday">Monday</button></td>
+              <td><button class="chore_tuesday">Tuesday</button></td>
+              <td><button class="chore_wednesday">Wednesday</button></td>
+              <td><button class="chore_thursday">Thursday</button></td>
+              <td><button class="chore_friday">Friday</button></td>
+              <td><button class="chore_saturday">Saturday</button></td>
             </tr>
           </thead>
-          <tbody>
+          <tbody style="display:none">
             <tr>
               <td><%= f.check_box :sunday %></td>
               <td><%= f.check_box :monday %></td>
