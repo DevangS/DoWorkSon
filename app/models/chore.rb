@@ -19,7 +19,7 @@ class Chore < ActiveRecord::Base
       count =0
       self.people.each do |p|
           p.ordering_number = count
-          count += 1
+          count += -1
       end
     end
   
@@ -41,7 +41,7 @@ class Chore < ActiveRecord::Base
       person = self.currentPerson
       self.update_shift
       person.destroy
-      if people.empty?
+      if self.people.empty?
           self.destroy
       end
   end
