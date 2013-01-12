@@ -1,6 +1,7 @@
 module TextHelper	
   #handles sending an SMS
-  def sendtext(chore, number_to_send_to, message)
+  def sendtext(number_to_send_to, message)
+  	puts "inside sendtext"
     twilio_sid = "AC95842c9042ee4068ce068b8802f740ca"
     twilio_token = "da31ced4fe37df32c2bd6da66c2c309d"
     twilio_phone_number = "3234542127"
@@ -21,7 +22,7 @@ module TextHelper
   	
   	sender = Person.where(:phone => from_number)
   	chore = Chore.find(chore_id)
-
+  	puts "inside handle_reply " + from_number + " " + message_body
   	case user_response
     #Has completed chore, so updated time completed and give next person in line the chore to do
   	when "Y"
@@ -39,16 +40,22 @@ module TextHelper
   end
 
   def send_reminders
+  	puts "inside send_reminders"
     #send reminders to do chores
-  	Chore.find_chores do |chore|
-  		if chore(:time_reminded => Time.now).save
-	        message = "Reminder: " + chore.name + ". Reply with Y(Done),N(Not Done),O(Opt Out) and " + chore.id + " eg. Y " + chore.id
-	        sendtext(chore, chore.currentPerson.phone, message)
+  	Chore.all.each do |chore|
+  		puts "called find_chores"
+  		chore.time_reminded = Time.now
+  		if chore.save
+  			puts "saved time"
+	        message = "Reminder: " + chore.name + ". Reply with Y(Done),N(Not Done),O(Opt Out) and " + chore.id.to_s + " eg. Y " + chore.id.to_s
+	        sendtext(chore.currentPerson.phone, message)
     	end
     end
+    puts "done find_chores"
 
     #send alerts about lazy people who didn't do their chores
-    Chore.find_lazy_chores do |chore|
+    Chore.find_lazy_chores.each do |chore|
+    	puts "called find_lazy"
       if chore(:time_completed => Time.now).save       
         alert_failure_to_complete(chore)
         chore.update_shift
@@ -58,7 +65,7 @@ module TextHelper
 
   def alert_group(chore, message)
     chore.people.each do |person|
-      sendtext(chore, person.phone, message)
+      sendtext(person.phone, message)
     end
   end
 
