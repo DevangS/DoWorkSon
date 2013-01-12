@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @chore.name %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @chore.time %>
+</p>
+
+<p>
+  <b>Startdate:</b>
+  <%= @chore.startDate %>
+</p>
+
+<p>
+  <b>Monday:</b>
+  <%= @chore.monday %>
+</p>
+
+<p>
+  <b>Tuesday:</b>
+  <%= @chore.tuesday %>
+</p>
+
+<p>
+  <b>Wednesday:</b>
+  <%= @chore.wednesday %>
+</p>
+
+<p>
+  <b>Thursday:</b>
+  <%= @chore.thursday %>
+</p>
+
+<p>
+  <b>Friday:</b>
+  <%= @chore.friday %>
+</p>
+
+<p>
+  <b>Saturday:</b>
+  <%= @chore.saturday %>
+</p>
+
+<p>
+  <b>Sunday:</b>
+  <%= @chore.sunday %>
+</p>
+
+<p>
+  <b>Currentperson:</b>
+  <%= @chore.currentPerson %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @chore.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_chore_path(@chore) %> |
+<%= link_to 'Back', chores_path %>
