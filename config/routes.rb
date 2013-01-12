@@ -1,11 +1,10 @@
 DoWorkSon::Application.routes.draw do
   get "text/sendtext"
-
+  post 'text/receivedtext'
   resources :chores
   
   root :to => "page#home"
 
-  match 'text/receivedtext' => 'text#receivedtext'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
