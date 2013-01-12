@@ -33,11 +33,10 @@ module TextHelper
       alert_failure_to_complete(chore)
     #Not going to do it so remove from chore, and alert group that they opt'd out
   	when "O"
-      chore.opt_out_current
       alert_opt_out(chore)
+      chore.opt_out_current
   	end	
 
-    "hello world"
   end
 
   def send_reminders
