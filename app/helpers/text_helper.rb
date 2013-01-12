@@ -75,7 +75,7 @@ module TextHelper
   end
 
   def alert_failure_to_complete(chore)
-    alert_group_of_action(chore,"has failed to complete")
+    alert_group_of_action(chore,"has failed to")
   end
 
   def alert_opt_out(chore)
