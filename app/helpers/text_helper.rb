@@ -37,6 +37,8 @@ module TextHelper
       chore.opt_out_current
       alert_opt_out(chore)
   	end	
+
+    "hello world"
   end
 
   def send_reminders
