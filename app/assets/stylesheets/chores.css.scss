@@ -47,38 +47,43 @@
 {
   height:120px;
   width:100px;
-  background-color: #FFE735;
+  background-color: rgb(255, 232, 108);
+  margin-top: 40px;
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   text-align: center;
-  border-bottom-right-radius: 10px;
-  box-shadow: 10px 10px 5px #888;
+  box-shadow: 3px 3px 5px #888;
+   position:relative;
 }
+
+.day:before {
+   content:"";
+   position:absolute;
+   top:0;
+   right:0;
+   border-width:0 16px 16px 0;
+   border-style:solid;
+   border-color:rgb(225,202,78) #FFF;
+   background:rgb(255, 232, 108);
+   -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+   -moz-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+   box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+   display:block; width:0; /* Firefox 3.0 damage limitation */
+}
+
 
 .day .top
 {
   margin-bottom: 20px;
 }
 
-note {
-  background-color :#f5f5f5;
-  width: 600px;
-  margin: 0 auto;
-  padding: 0;
-}
-h4 {
-  color: #cd0000;
-  font-size: 42px;
-  letter-spacing: -2px;
-  text-align: left;
-}
 .list {
-  color: #555;
-  font-size: 22px;
+  font-size: 14px;
   padding: 0 !important;
-  width: 500px;
+  width: 150px;
   font-family: courier, monospace;
   border: 1px solid #dedede;
+  background-color: rgb(255, 232, 108);
 }
 .list li {
   list-style: none;
@@ -93,7 +98,16 @@ h4 {
   border-right: 1px solid #ffaa9f;
   width: 2px;
   float: left;
-  height: 495px;
+  height: 206px;
   margin-left: 40px;
 }
 
+.day_num {
+  font-weight: bold;
+  font-size: 46px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.chore_desc {
+}

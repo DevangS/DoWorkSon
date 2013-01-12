@@ -1,92 +1,76 @@
 <p id="notice"><%= notice %></p>
-
   <h1><%= @chore.name %></h1>
-  <%= @chore.description %>
-
+  <span><%= @chore.description %></span>
+<br/>
 <div class="container">
   <div class="row schedule">
-    <div class="span1 day">
+    <div class="span1"></div>
+    <div class="span1 day note">
       <div class="top">
-        <%= @daynames[Date.today.wday] %>
-        <%= Date.today.strftime("%m/%d/%U") %>
+        <%= @daynames[Date.today.wday].capitalize %>
+        <div class="day_num"><%= Date.today.strftime("%d") %></div>
       </div>
       <div class="bottom">
-        Andrew
+        <%= @people[@daynames[Date.today.wday]].name if @people[@daynames[Date.today.wday]] %>
       </div>
     </div>
     <div class="span1 day">
       <div class="top">
-        <%= @daynames[Date.today.tomorrow.wday%7] %>
-        <%= Date.today.tomorrow.strftime("%m/%d/%U") %>
+        <%= @daynames[Date.today.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.strftime("%d") %></div>
       </div>
       <div class="bottom">
+        <%= @people[@daynames[Date.today.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.wday]] %>
       </div>
     </div>
     <div class="span1 day">
       <div class="top">
-        <%= @daynames[Date.today.tomorrow.tomorrow.wday%7] %>
-        <%= Date.today.tomorrow.tomorrow.strftime("%m/%d/%U") %>
+        <%= @daynames[Date.today.tomorrow.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.tomorrow.strftime("%d") %></div>
       </div>
       <div class="bottom">
-        
+        <%= @people[@daynames[Date.today.tomorrow.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.tomorrow.wday]] %>
       </div>
     </div>
     <div class="span1 day">
       <div class="top">
-        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.wday%7] %>
-        <%= Date.today.tomorrow.tomorrow.tomorrow.strftime("%m/%d/%U") %>
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.tomorrow.tomorrow.strftime("%d") %></div>
       </div>
       <div class="bottom">
-        Devin
+        <%= @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.wday]] %>
       </div>
     </div>
     <div class="span1 day">
       <div class="top">
-        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.wday%7] %>
-        <%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%m/%d/%U") %>
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%d") %></div>
       </div>
       <div class="bottom">
+        <%= @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.wday]]%>
       </div>
     </div>
     <div class="span1 day">
       <div class="top">
-        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday%7] %>
-        <%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%m/%d/%U") %>
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%d") %></div>
       </div>
       <div class="bottom">
-        Devang
+        <%= @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday]] %>
       </div>
     </div>
     <div class="span1 day">
       <div class="top">
-        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday%7] %>
-        <%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%m/%d/%U") %>
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%d") %></div>
       </div>
       <div class="bottom">
+        <%= @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday]] %>
       </div>
     </div>
   </div>
 </div>
 
-
-<h4>Notes</h4>
-
-<div class="note">
-<div class="lines"></div>
-<ul class="list">
-  <li>Eat Breakfeast</li>
-  <li>Feed Pugsly, the cow</li>
-  <li>Sit Down</li>
-  <li>Eat lunch</li>
-  <li>Call mom</li>
-  <li>Tweet about feeding my cow, pugsly</li>
-  <li>Join a hangout in google+</li>
-  <li>Prepare Dinner</li>
-  <li>Eat Dinner</li>
-  <li>Get ready for bed</li>
-  <li>Go to bed</li>
-</ul>
-</div>
 
 <%= link_to 'Edit', edit_chore_path(@chore) %> |
 <%= link_to 'Delete', @chore, method: :delete, data: { confirm: 'Are you sure?' } %> |

@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>Chore</th>
-      <th>Status</th>
+      <th>Last Completed</th>
       <th>Next Victim</th>
     </tr>
   </thead>
@@ -13,7 +13,7 @@
       <%= link_to chore.name, chore %>
       <span class="help-block"><%= chore.description %></span>
     </td>
-    <td><text class="incomplete">Incomplete</text></td>
+    <td><span title="<%= chore.time_completed %>"><%=chore.time_completed > Time.now-5.years ? time_ago_in_words(chore.time_completed) : "Never" %></span></td>
     <td><%= chore.currentPerson.name %></td>
   </tr>
 <% end %>
