@@ -14,7 +14,7 @@ end
 
 class Person < ActiveRecord::Base
   belongs_to :chore
-  attr_accessible :email, :name, :order, :phone
+  attr_accessible :email, :name, :ordering_number, :phone
   
   validates :email,  :email => true
   validates :phone, :phone => true

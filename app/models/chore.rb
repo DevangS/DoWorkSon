@@ -16,6 +16,11 @@ class Chore < ActiveRecord::Base
       self.time_completed  ||= t -1.day
       self.time_reminded ||= t - 1.day
       self.currentPerson = self.people.first
+      count =0
+      self.people.each do |p|
+          p.ordering_number = count
+          count += 1
+      end
     end
   
  
@@ -42,19 +47,20 @@ class Chore < ActiveRecord::Base
   end
   
   def update_shift
-      list = self.people.order(:order)
+      list = self.people.order(:ordering_number)
       n=false
       list.each do |p|
-          if n == true
-              currentPerson = p
-              return
+          if n
+              self.currentPerson = p
+              self.save
+              return 
           end
-          if p.id == currentPerson.id
+          if p.id == self.currentPerson.id
               n =true
           end
       end
-      currentPerson = list.first
-      return
+      self.currentPerson = list.first
+      self.save
   end
   
   def self.find_chores  
