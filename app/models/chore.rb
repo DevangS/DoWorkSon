@@ -19,7 +19,7 @@ class Chore < ActiveRecord::Base
       count =0
       self.people.each do |p|
           p.ordering_number = count
-          count += 1
+          count += -1
       end
     end
   
@@ -41,7 +41,7 @@ class Chore < ActiveRecord::Base
       person = self.currentPerson
       self.update_shift
       person.destroy
-      if people.empty?
+      if self.people.empty?
           self.destroy
       end
   end
@@ -50,7 +50,7 @@ class Chore < ActiveRecord::Base
       list = self.people.order(:ordering_number)
       list.each_index do |i|
 
-          if p[i].id == self.currentPerson.id
+          if list[i].id == self.currentPerson.id
               return list if i==0
               return list[i..-1] + list[0..(i-1)]
               
