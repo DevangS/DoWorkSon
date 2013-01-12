@@ -20,13 +20,12 @@ module TextHelper
   	user_response = message_body.split(' ')[0]
   	chore_id = message_body.split(' ')[1]
   	
-  	sender = Person.where(:phone => from_number)
   	chore = Chore.find(chore_id)
-  	puts "inside handle_reply " + from_number + " " + message_body
   	case user_response
     #Has completed chore, so updated time completed and give next person in line the chore to do
   	when "Y"
-  		if chore(:time_completed => Time.now).save
+      chore.time_completed = Time.now
+  		if chore.save
         chore.update_shift
       end
     #Hasn't completed chore, so alert group 

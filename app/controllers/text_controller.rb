@@ -7,5 +7,6 @@ class TextController < ApplicationController
     from_number = params["From"]
  
     handle_reply(from_number, message_body)
+    render json: {}
   end
 end
