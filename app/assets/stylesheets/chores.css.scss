@@ -119,3 +119,13 @@
 .chore_desc {
   margin: 10px;
 }
+
+.table-striped thead > tr > td,
+.table-striped thead > tr > th {
+  background-color: #FFFFFF;
+}
+
+.table-striped tbody > tr:nth-child(even) > td,
+.table-striped tbody > tr:nth-child(even) > th {
+  background-color: #FFFFFF;
+}
