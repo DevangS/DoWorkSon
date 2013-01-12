@@ -42,7 +42,7 @@ module TextHelper
   def send_reminders
   	puts "inside send_reminders"
     #send reminders to do chores
-  	Chore.all.each do |chore|
+  	Chore.find_chores.each do |chore|
   		puts "called find_chores"
   		chore.time_reminded = Time.now
   		if chore.save
