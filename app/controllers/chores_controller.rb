@@ -14,7 +14,22 @@ class ChoresController < ApplicationController
   # GET /chores/1.json
   def show
     @chore = Chore.find(params[:id])
-
+#     @people = {:monday: nil,
+#                :tuesday: nil,
+#                :wednesday: nil,
+#                :thursday: nil,
+#                :friday: nil,
+#                :saturday: nil,
+#                :sunday: nil,
+#                }
+#     today = Time.now.strftime('%A').downcase
+#     flag = false
+#     nextp=@chore.next_people
+#     @people.each do |weekday,v|
+#         flag = true if weekday == today
+#         if flag && @chore[weekday]
+#             @people[weekday]=
+#         end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @chore }
@@ -44,7 +59,7 @@ class ChoresController < ApplicationController
 
     respond_to do |format|
       if @chore.save
-        format.html { redirect_to @chore, notice: 'Chore was successfully created.' }
+        format.html { redirect_to video_path, notice: 'Chore was successfully created.',location: @chore }
         format.json { render json: @chore, status: :created, location: @chore }
       else
         format.html { render action: "new" }
@@ -60,7 +75,7 @@ class ChoresController < ApplicationController
 
     respond_to do |format|
       if @chore.update_attributes(params[:chore])
-        format.html { redirect_to @chore, notice: 'Chore was successfully updated.' }
+        format.html { redirect_to video_path,  notice: 'Chore was successfully updated.',location: @chore }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
