@@ -1,4 +1,6 @@
 DoWorkSon::Application.routes.draw do
+  get "text/sendtext"
+
   resources :chores
   
   root :to => "page#home"

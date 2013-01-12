@@ -10,7 +10,12 @@
       </ul>
     </div>
   <% end %>
-
+ <% f.fields_for :people do |builder| %>
+  <p>
+    <%= builder.label :content, "Person" %><br />
+    <%= builder.text_area :name, :rows => 3 %>
+  </p>
+  <% end %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
