@@ -44,7 +44,7 @@ class ChoresController < ApplicationController
 
     respond_to do |format|
       if @chore.save
-        format.html { redirect_to @chore, notice: 'Chore was successfully created.' }
+        format.html { redirect_to video_path, notice: 'Chore was successfully created.',location: @chore }
         format.json { render json: @chore, status: :created, location: @chore }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class ChoresController < ApplicationController
 
     respond_to do |format|
       if @chore.update_attributes(params[:chore])
-        format.html { redirect_to @chore, notice: 'Chore was successfully updated.' }
+        format.html { redirect_to video_path,  notice: 'Chore was successfully updated.',location: @chore }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

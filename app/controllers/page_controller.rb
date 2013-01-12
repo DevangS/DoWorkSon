@@ -4,5 +4,6 @@ class PageController < ApplicationController
     end
     def video
         @video = 'l1711jiiRtM'
+        
     end
 end

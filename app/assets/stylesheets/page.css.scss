@@ -3,12 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @font-face {
-    font-family: Bleeding_Cowboy;
-    src: local(Bleeding_Cowboy), url('Bleeding_Cowboy.ttf') format('opentype');
+    font-family: westernFont;
+    src: local(westernFont), url('PointedlyMad.ttf') format('opentype');
 }
 
-.brand {
-    font-family:Bleeding_Cowboy;
+.hero-unit h1 {
+    font-family:westernFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:90px;
 }
 .new_chore_button
 {
