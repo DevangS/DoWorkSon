@@ -36,6 +36,7 @@ $(function() {
       <label class="control-label strong" for="name">Chore Name</label>  
       <div class="controls">  
         <%= f.text_field :name, :class => "span3" %>
+        <span class="help-block">Examples: Take out the Trash, Sweep the Floor, Pay the Bills, etc.</span>
       </div>  
     </div>  
     <div class="control-group">
@@ -99,13 +100,13 @@ $(function() {
               Phone:
               <%= f.text_field :phone %>
 
-              <a href="#" class="remove">remove</a>
+              <a href="#" class="remove"><i class="icon-remove-sign"></i>remove</a>
               <%= f.hidden_field :id %>
               <%= f.hidden_field :_destroy %>
             </fieldset>
           <% end %>
           </div>
-          <a href="#" class="add">add people</a>
+          <a href="#" class="add"><i class="icon-plus-sign"></i>add people</a>
         </div>
 
       </div>
