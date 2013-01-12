@@ -1,5 +1,5 @@
 DoWorkSon::Application.routes.draw do
-  post 'text/receivedtext'
+  get 'text/receivedtext'
   resources :chores
   
   root :to => "page#home"
