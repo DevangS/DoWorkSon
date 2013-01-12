@@ -25,7 +25,7 @@ class ChoresController < ApplicationController
   # GET /chores/new.json
   def new
     @chore = Chore.new
-    3.times { @chore.people.build }
+    @chore.people.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @chore }
