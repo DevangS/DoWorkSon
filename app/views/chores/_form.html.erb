@@ -11,75 +11,87 @@
     </div>
   <% end %>
  
- 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :time %><br />
-    <%= f.time_select :time %>
-  </div>
-  <div class="field">
-    <%= f.label :startDate %><br />
-    <%= f.date_select :startDate %>
-  </div>
+  <div class="form-horizontal"> 
   
-  People:
-  <div class="people">
-    <div class="items">
-    <%= f.nested_fields_for :people do |f| %>
-      <fieldset class="item">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-        <%= f.label :phone %>
-        <%= f.text_field :phone %>
-
-        <a href="#" class="remove">remove</a>
-
-        <%= f.hidden_field :id %>
-        <%= f.hidden_field :_destroy %>
-      </fieldset>
-    <% end %>
+    <div class="control-group">  
+      <label class="control-label" for="name">Name</label>  
+      <div class="controls">  
+        <%= f.text_field :name, :class => "span3" %>
+      </div>  
+    </div>  
+    <div class="control-group">
+      <label class="control-label" for="description">Description</label>
+      <div class="controls">
+        <%= f.text_area :description, {:class => "span3", :rows => "4"} %>
+      </div>
     </div>
-    <a href="#" class="add">add people</a>
+    <div class="control-group">
+      <label class="control-label" for="notify_time">Start Date</label>
+      <div class="controls">
+        <%= f.date_select :startDate %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="notify_time">Time of Reminder</label>
+      <div class="controls">
+        <%= f.time_select :time %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="days_of_week">Days of the Week</label>
+      <div class="controls">
+        <table class="table" id="days_of_week">
+          <thead>
+            <tr>
+              <td>Sun</td>
+              <td>Mon</td>
+              <td>Tues</td>
+              <td>Wed</td>
+              <td>Thurs</td>
+              <td>Fri</td>
+              <td>Sat</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= f.check_box :sunday %></td>
+              <td><%= f.check_box :monday %></td>
+              <td><%= f.check_box :tuesday %></td>
+              <td><%= f.check_box :wednesday %></td>
+              <td><%= f.check_box :thursday %></td>
+              <td><%= f.check_box :friday %></td>
+              <td><%= f.check_box :saturday %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">People</label>
+      <div class="controls">
+        <div class="people">
+          <div class="items">
+          <%= f.nested_fields_for :people do |f| %>
+            <fieldset class="item">
+              Name: <%= f.text_field :name %>
+              Email: <%= f.text_field :email %>
+              Phone: <%= f.text_field :phone %>
+
+              <a href="#" class="remove">remove</a>
+
+              <%= f.hidden_field :id %>
+              <%= f.hidden_field :_destroy %>
+            </fieldset>
+          <% end %>
+          </div>
+          <a href="#" class="add">add people</a>
+        </div>
+
+      </div>
+    </div>
   </div>
-  
-  <div class="field">
-    <%= f.label :monday %><br />
-    <%= f.check_box :monday %>
-  </div>
-  <div class="field">
-    <%= f.label :tuesday %><br />
-    <%= f.check_box :tuesday %>
-  </div>
-  <div class="field">
-    <%= f.label :wednesday %><br />
-    <%= f.check_box :wednesday %>
-  </div>
-  <div class="field">
-    <%= f.label :thursday %><br />
-    <%= f.check_box :thursday %>
-  </div>
-  <div class="field">
-    <%= f.label :friday %><br />
-    <%= f.check_box :friday %>
-  </div>
-  <div class="field">
-    <%= f.label :saturday %><br />
-    <%= f.check_box :saturday %>
-  </div>
-  <div class="field">
-    <%= f.label :sunday %><br />
-    <%= f.check_box :sunday %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <br/><br/>
+  <div class="actions center" style="width:200px">
+    <%= f.submit :class => "btn btn-primary btn-large" %>
   </div>
 <% end %>

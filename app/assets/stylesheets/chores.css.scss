@@ -1,3 +1,15 @@
 // Place all the styles related to the Chores controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#days_of_week td
+{
+  text-align: center;
+}
+
+.new_chores_title
+{
+  text-align:center;
+  width: 300px;
+  padding-bottom: 30px;
+}
