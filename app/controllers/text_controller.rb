@@ -1,5 +1,5 @@
 class TextController < ApplicationController
-  require()
+  
   #handles recieving an SMS reply
   def index
     message_body = params["Body"]
