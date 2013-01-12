@@ -10,12 +10,8 @@
       </ul>
     </div>
   <% end %>
- <% f.fields_for :people do |builder| %>
-  <p>
-    <%= builder.label :content, "Person" %><br />
-    <%= builder.text_area :name, :rows => 3 %>
-  </p>
-  <% end %>
+ 
+ 
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -28,6 +24,29 @@
     <%= f.label :startDate %><br />
     <%= f.date_select :startDate %>
   </div>
+  
+  People:
+  <div class="people">
+    <div class="items">
+    <%= f.nested_fields_for :people do |f| %>
+      <fieldset class="item">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <%= f.label :phone %>
+        <%= f.text_field :phone %>
+
+        <a href="#" class="remove">remove</a>
+
+        <%= f.hidden_field :id %>
+        <%= f.hidden_field :_destroy %>
+      </fieldset>
+    <% end %>
+    </div>
+    <a href="#" class="add">add people</a>
+  </div>
+  
   <div class="field">
     <%= f.label :monday %><br />
     <%= f.check_box :monday %>
@@ -55,10 +74,6 @@
   <div class="field">
     <%= f.label :sunday %><br />
     <%= f.check_box :sunday %>
-  </div>
-  <div class="field">
-    <%= f.label :currentPerson %><br />
-    <%= f.text_field :currentPerson %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
