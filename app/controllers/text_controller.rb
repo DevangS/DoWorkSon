@@ -9,14 +9,7 @@ class TextController < ApplicationController
   end
 
   #handles sending an SMS
-  def sendtext
-  	number_to_send_to = params[:number_to_send_to]
-  	chore = Chore.find(params[:chore_id])
-
-  	header = "Reminder: " + chore.description
-    response_template = "Reply with Y - Yes/N - No/O - Opt Out and " + chore.id + " eg. Y " + chore.id
-    message = header + " " + response_template
-    
+  def sendtext chore number_to_send_to message
     twilio_sid = "abc123"
     twilio_token = "foobar"
     twilio_phone_number = "5555555555"
@@ -35,16 +28,58 @@ class TextController < ApplicationController
   	user_response = message_body.split(' ')[0]
   	chore_id = message_body.split(' ')[1]
   	
-  	sender = Persons.where(:phone => from_number)
-  	chore = Chores.find(chore_id)
+  	sender = Person.where(:phone => from_number)
+  	chore = Chore.find(chore_id)
 
   	case user_response
+    #Has completed chore, so updated time completed and give next person in line the chore to do
   	when "Y"
-  		#Mark completed
+  		if chore(:time_completed => Time.now).save
+        chore.update_shift
+      end
+    #Hasn't completed chore, so alert group 
   	when "N"
-  		#Mark not completed yet, remind again in 10 mins or so
+      alert_failure_to_complete chore
+    #Not going to do it so remove from chore, and alert group that they opt'd out
   	when "O"
-  		#Not going to do it so remove from chore
+      chore.opt_out_current
+      alert_opt_out chore
+  	end	
   end
 
+  def send_hourly_reminders
+    #send reminders to do chores
+  	Chores.find_chores do |chore|
+  		if chore(:time_reminded => Time.now).save
+        message = "Reminder: " + chore.name + ". Reply with Y(Done),N(Not Done),O(Opt Out) and " + chore.id + " eg. Y " + chore.id
+        sendtext chore chore.currentPerson.phone message
+    	end
+    end
+
+    #send alerts about lazy people who didn't do their chores
+    Chores.find_lazy_chores do |chore|
+      if chore(:time_completed => Time.now).save       
+        alert_failure_to_complete chore
+        chore.update_shift
+    end
+
+  end
+
+  def alert_group chore message
+    chore.people.each do |person|
+      sendtext chore person.phone message
+    end
+  end
+
+  def alert_group_of_action chore action_msg
+    alert_group chore (chore.currentPerson.name + " " + action_msg + " " + chore.name + "!")
+  end
+
+  def alert_failure_to_complete chore
+    alert_group_of_action chore "has failed to complete"
+  end
+
+  def alert_opt_out chore
+    alert_group_of_action chore "has opted out of"
+  end
 end
