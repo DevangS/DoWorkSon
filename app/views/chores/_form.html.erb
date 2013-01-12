@@ -1,16 +1,19 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 <script>
 $(function() {
-  $("#days_of_week").find("input:checkbox").toggle(
-    function() { 
+  $("#days_of_week").find("input:checkbox").each(function() {
+    if($(this).is(':checked')) {
       $("."+$(this).attr("id")).css('background-color', 'greenyellow'); 
-      $(this).attr('checked', 'checked');
-    },
-    function() { 
-      $("."+$(this).attr("id")).css('background-color', 'transparent'); 
-      $(this).removeAttr('checked');
     }
-  ); 
+  });
+
+  $("#days_of_week").find("input:checkbox").click(function() {
+    if($(this).is(':checked')) {
+      $("."+$(this).attr("id")).css('background-color', 'greenyellow'); 
+    } else {
+      $("."+$(this).attr("id")).css('background-color', 'transparent'); 
+    }
+  }); 
 });
 </script>
 
