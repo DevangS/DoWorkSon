@@ -1,40 +1,21 @@
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Time</th>
-    <th>Startdate</th>
-    <th>Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
-    <th>Saturday</th>
-    <th>Sunday</th>
-    <th>Currentperson</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Chore</th>
+      <th>Status</th>
+      <th>Next Victim</th>
+    </tr>
+  </thead>
+  <tbody>
 <% @chores.each do |chore| %>
   <tr>
-    <td><%= chore.name %></td>
-    <td><%= chore.time %></td>
-    <td><%= chore.start_date %></td>
-    <td><%= chore.monday %></td>
-    <td><%= chore.tuesday %></td>
-    <td><%= chore.wednesday %></td>
-    <td><%= chore.thursday %></td>
-    <td><%= chore.friday %></td>
-    <td><%= chore.saturday %></td>
-    <td><%= chore.sunday %></td>
-    <td><%= chore.currentPerson %></td>
-    <td><%= chore.description %></td>
-    <td><%= link_to 'Show', chore %></td>
-    <td><%= link_to 'Edit', edit_chore_path(chore) %></td>
-    <td><%= link_to 'Destroy', chore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to chore.name, chore %>
+      <span class="help-block"><%= chore.description %></span>
+    </td>
+    <td><text class="incomplete">Incomplete</text></td>
+    <td><%= chore.currentPerson.name %></td>
   </tr>
 <% end %>
+  </tbody>
 </table>
-
