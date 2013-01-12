@@ -4,8 +4,9 @@
 
 #days_of_week td
 {
-  border: 3px solid white;
+  border: 3px solid transparent;
   text-align: center;
+  padding: 0x;
 }
 
 .people .item input {
@@ -122,3 +123,36 @@
 .chore_desc {
   margin: 10px;
 }
+
+.table-striped thead > tr > td,
+.table-striped thead > tr > th {
+  background-color: #FFFFFF;
+}
+
+.table-striped tbody > tr:nth-child(even) > td,
+.table-striped tbody > tr:nth-child(even) > th {
+  background-color: #FFFFFF;
+}
+
+#days_of_week tr,
+#days_of_week td
+{
+  padding: 0px;
+}
+
+#days_of_week button
+{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  margin: 0px;
+}
+
+.days_button
+{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  margin: 0px;
+}
+
