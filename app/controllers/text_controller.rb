@@ -5,11 +5,11 @@ class TextController < ApplicationController
     message_body = params["Body"]
     from_number = params["From"]
  
-    handle_reply from_number, message_body
+    handle_reply(from_number, message_body)
   end
 
   #handles sending an SMS
-  def sendtext chore number_to_send_to message
+  def sendtext(chore, number_to_send_to, message)
     twilio_sid = "abc123"
     twilio_token = "foobar"
     twilio_phone_number = "5555555555"
@@ -23,7 +23,7 @@ class TextController < ApplicationController
     )
   end
 
-  def handle_reply from_number message_body
+  def handle_reply(from_number, message_body)
   	#parse the message_body
   	user_response = message_body.split(' ')[0]
   	chore_id = message_body.split(' ')[1]
@@ -39,11 +39,11 @@ class TextController < ApplicationController
       end
     #Hasn't completed chore, so alert group 
   	when "N"
-      alert_failure_to_complete chore
+      alert_failure_to_complete(chore)
     #Not going to do it so remove from chore, and alert group that they opt'd out
   	when "O"
       chore.opt_out_current
-      alert_opt_out chore
+      alert_opt_out(chore)
   	end	
   end
 
@@ -52,34 +52,33 @@ class TextController < ApplicationController
   	Chores.find_chores do |chore|
   		if chore(:time_reminded => Time.now).save
         message = "Reminder: " + chore.name + ". Reply with Y(Done),N(Not Done),O(Opt Out) and " + chore.id + " eg. Y " + chore.id
-        sendtext chore chore.currentPerson.phone message
+        sendtext(chore, chore.currentPerson.phone, message)
     	end
     end
 
     #send alerts about lazy people who didn't do their chores
     Chores.find_lazy_chores do |chore|
       if chore(:time_completed => Time.now).save       
-        alert_failure_to_complete chore
+        alert_failure_to_complete(chore)
         chore.update_shift
     end
-
   end
 
-  def alert_group chore message
+  def alert_group(chore, message)
     chore.people.each do |person|
-      sendtext chore person.phone message
+      sendtext(chore, person.phone, message)
     end
   end
 
-  def alert_group_of_action chore action_msg
-    alert_group chore (chore.currentPerson.name + " " + action_msg + " " + chore.name + "!")
+  def alert_group_of_action(chore, action_msg)
+    alert_group(chore, chore.currentPerson.name + " " + action_msg + " " + chore.name + "!")
   end
 
-  def alert_failure_to_complete chore
-    alert_group_of_action chore "has failed to complete"
+  def alert_failure_to_complete(chore)
+    alert_group_of_action(chore,"has failed to complete")
   end
 
-  def alert_opt_out chore
-    alert_group_of_action chore "has opted out of"
+  def alert_opt_out(chore)
+    alert_group_of_action(chore, "has opted out of")
   end
 end
