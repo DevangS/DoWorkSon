@@ -21,22 +21,23 @@ module TextHelper
   	chore_id = message_body.split(' ')[1]
   	
   	chore = Chore.find(chore_id)
-  	case user_response
-    #Has completed chore, so updated time completed and give next person in line the chore to do
-  	when "Y"
-      chore.time_completed = Time.now
-  		if chore.save
-        chore.update_shift
-      end
-    #Hasn't completed chore, so alert group 
-  	when "N"
-      alert_failure_to_complete(chore)
-    #Not going to do it so remove from chore, and alert group that they opt'd out
-  	when "O"
-      alert_opt_out(chore)
-      chore.opt_out_current
-  	end	
-
+    unless chore.currentPerson.phone != from_number[2..-1]
+    	case user_response
+      #Has completed chore, so updated time completed and give next person in line the chore to do
+    	when "Y"
+        chore.time_completed = Time.now
+    		if chore.save
+          chore.update_shift
+        end
+      #Hasn't completed chore, so alert group 
+    	when "N"
+        alert_failure_to_complete(chore)
+      #Not going to do it so remove from chore, and alert group that they opt'd out
+    	when "O"
+        alert_opt_out(chore)
+        chore.opt_out_current
+    	end	
+    end
   end
 
   def send_reminders
