@@ -1,5 +1,4 @@
 DoWorkSon::Application.routes.draw do
-  get "text/sendtext"
   post 'text/receivedtext'
   resources :chores
   
