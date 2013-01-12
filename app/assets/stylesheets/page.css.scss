@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@font-face {
+    font-family: Bleeding_Cowboy;
+    src: local(Bleeding_Cowboy), url('Bleeding_Cowboy.ttf') format('opentype');
+}
+
+.brand {
+    font-family:Bleeding_Cowboy;
+}
 .new_chore_button
 {
   width: 200px;
@@ -26,9 +34,16 @@
 
 .page-content
 {
-  width: 700px;
-  height: 500px;
-  background-image: url("hand-holding-whip-hi.png");
+  height:700px;
+  width:100%;
+  background-image: url("whip_crack.jpg");
   background-repeat: no-repeat;
   background-position: 0px 0px;
+  -webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+
+}
+.page-content .hero-unit {
+    background-color:rgba(255,255,255,.6    );
 }

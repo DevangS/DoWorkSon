@@ -4,6 +4,7 @@ DoWorkSon::Application.routes.draw do
   resources :chores
   
   root :to => "page#home"
+  match "video" => "page#video"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
