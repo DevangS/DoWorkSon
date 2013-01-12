@@ -50,7 +50,7 @@ class Chore < ActiveRecord::Base
       list = self.people.order(:ordering_number)
       list.each_index do |i|
 
-          if p[i].id == self.currentPerson.id
+          if list[i].id == self.currentPerson.id
               return list if i==0
               return list[i..-1] + list[0..(i-1)]
               
