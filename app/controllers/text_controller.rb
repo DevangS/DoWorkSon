@@ -1,7 +1,7 @@
 class TextController < ApplicationController
   
   #handles recieving an SMS reply
-  def index
+  def receivetext
     message_body = params["Body"]
     from_number = params["From"]
  
@@ -10,9 +10,9 @@ class TextController < ApplicationController
 
   #handles sending an SMS
   def sendtext(chore, number_to_send_to, message)
-    twilio_sid = "abc123"
-    twilio_token = "foobar"
-    twilio_phone_number = "5555555555"
+    twilio_sid = "AC95842c9042ee4068ce068b8802f740ca"
+    twilio_token = "da31ced4fe37df32c2bd6da66c2c309d"
+    twilio_phone_number = "3234542127"
  
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
  
