@@ -44,8 +44,8 @@ test:
   encoding: unicode
   database: DoWorkSon_test
   pool: 5
-  username: DoWorkSon
-  password:
+  username: postgres
+  password: postgres
 
 production:
   adapter: postgresql
