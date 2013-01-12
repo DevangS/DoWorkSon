@@ -4,6 +4,7 @@
 
 #days_of_week td
 {
+  border: 3px solid white;
   text-align: center;
 }
 
@@ -12,4 +13,14 @@
   text-align:center;
   width: 300px;
   padding-bottom: 30px;
+}
+
+.strong
+{
+  font-weight: bold;
+}
+
+.field_with_errors
+{
+  display: inline;
 }
