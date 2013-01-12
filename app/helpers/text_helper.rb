@@ -42,8 +42,8 @@ module TextHelper
     #send reminders to do chores
   	Chores.find_chores do |chore|
   		if chore(:time_reminded => Time.now).save
-        message = "Reminder: " + chore.name + ". Reply with Y(Done),N(Not Done),O(Opt Out) and " + chore.id + " eg. Y " + chore.id
-        sendtext(chore, chore.currentPerson.phone, message)
+	        message = "Reminder: " + chore.name + ". Reply with Y(Done),N(Not Done),O(Opt Out) and " + chore.id + " eg. Y " + chore.id
+	        sendtext(chore, chore.currentPerson.phone, message)
     	end
     end
 
