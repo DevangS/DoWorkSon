@@ -18,7 +18,15 @@
   width: 400px;
 }
 
+.hero-unit
+{
+  height: 500px;
+  background-color: transparent;
+
+}
+
 .page-content
 {
-  background-image: url("../../assets/images/hand-holding-whip-hi.png");
+  background-image: url("hand-holding-whip-hi.png");
+  background-repeat: no-repeat;
 }
