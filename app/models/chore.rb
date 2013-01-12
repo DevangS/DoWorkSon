@@ -1,5 +1,5 @@
 class Chore < ActiveRecord::Base
-  belongs_to :currentPerson, :class_name => "person"
+  belongs_to :currentPerson, :class_name => "Person"
   has_many :people, :dependent => :destroy
   accepts_nested_attributes_for :people, allow_destroy: true
   attr_accessible :currentPerson,:people_attributes,:time_reminded,:time_completed, :description, :friday, :monday, :name, :saturday, :start_date, :sunday, :thursday, :time, :tuesday, :wednesday
@@ -34,7 +34,7 @@ class Chore < ActiveRecord::Base
   def opt_out_current
       #remove current person and set chore to next person
       person = self.currentPerson
-      self.to_next_person
+      self.update_shift
       person.destroy
       if people.empty?
           self.destroy
@@ -42,7 +42,7 @@ class Chore < ActiveRecord::Base
   end
   
   def update_shift
-      list = self.people.all.order_by :order
+      list = self.people.order(:order)
       n=false
       list.each do |p|
           if n == true
