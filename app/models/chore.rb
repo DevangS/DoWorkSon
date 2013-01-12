@@ -46,6 +46,18 @@ class Chore < ActiveRecord::Base
       end
   end
   
+  def next_people
+      list = self.people.order(:ordering_number)
+      list.each_index do |i|
+
+          if p[i].id == self.currentPerson.id
+              return list if i==0
+              return list[i..-1] + list[0..(i-1)]
+              
+          end
+      end
+  end
+  
   def update_shift
       list = self.people.order(:ordering_number)
       n=false
@@ -67,18 +79,18 @@ class Chore < ActiveRecord::Base
       t= Time.now
       day = t.strftime('%A').downcase
       hours_ago = t - 12.hours
-      pre_time = Time.gm(2000,1,1,0,0,0) + t.min.minutes + t.sec.seconds - 1.hour
+      pre_time = Time.gm(2000,1,1,0,0,0) + t.hour.hours + t.min.minutes + t.sec.seconds + 1.hour
       pre_time = Time.gm(2000,1,1,0,0,0) if pre_time<Time.gm(2000,1,1,0,0,1)
-      chores = Chore.where(day+" AND (time_completed IS NULL OR time_completed < ?) and time > ? AND start_date >= ?",hours_ago,pre_time,t-1.day)
+      chores = Chore.where(day+" AND (time_completed IS NULL OR time_completed < ?) and time < ? AND start_date >= ?",hours_ago,pre_time,t-1.day)
   end
                       
   def self.find_lazy_chores
       t= Time.now
       day = t.strftime('%A').downcase
       hours_ago = t - 12.hours
-      pre_time = Time.gm(2000,1,1,0,0,0) + t.min.minutes + t.sec.seconds + 1.hour
+      pre_time = Time.gm(2000,1,1,0,0,0) + t.min.minutes + t.sec.seconds + 3.hour
       pre_time = Time.gm(2000,1,1,0,0,0) if pre_time<Time.gm(2000,1,1,0,0,1)
-      chores = Chore.where(day+" AND (time_completed IS NULL OR time_completed > ?) and time > ? AND start_date >= ?",hours_ago+ 23.hours,pre_time,t-1.day)
+      chores = Chore.where(day+" AND (time_completed IS NULL OR time_completed > ?) and time < ? AND start_date >= ?",hours_ago+ 23.hours,pre_time,t-1.day)
   end
 
 end

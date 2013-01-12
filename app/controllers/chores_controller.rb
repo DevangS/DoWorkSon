@@ -14,7 +14,22 @@ class ChoresController < ApplicationController
   # GET /chores/1.json
   def show
     @chore = Chore.find(params[:id])
-
+#     @people = {:monday: nil,
+#                :tuesday: nil,
+#                :wednesday: nil,
+#                :thursday: nil,
+#                :friday: nil,
+#                :saturday: nil,
+#                :sunday: nil,
+#                }
+#     today = Time.now.strftime('%A').downcase
+#     flag = false
+#     nextp=@chore.next_people
+#     @people.each do |weekday,v|
+#         flag = true if weekday == today
+#         if flag && @chore[weekday]
+#             @people[weekday]=
+#         end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @chore }
