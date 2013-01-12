@@ -19,7 +19,7 @@ class Chore < ActiveRecord::Base
       count =0
       self.people.each do |p|
           p.ordering_number = count
-          count += 1
+          count += -1
       end
     end
   
