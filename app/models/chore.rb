@@ -41,7 +41,7 @@ class Chore < ActiveRecord::Base
       person = self.currentPerson
       self.update_shift
       person.destroy
-      if people.empty?
+      if self.people.empty?
           self.destroy
       end
   end

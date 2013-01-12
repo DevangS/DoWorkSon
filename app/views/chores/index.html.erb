@@ -10,7 +10,7 @@
 <% @chores.each do |chore| %>
   <tr>
     <td>
-      <%= link_to chore.name, chore %>
+      <%= link_to "<i class='icon-edit'></i>".html_safe+chore.name, chore %>
       <span class="help-block"><%= chore.description %></span>
     </td>
     <td><span title="<%= chore.time_completed %>"><%=chore.time_completed > Time.now-5.years ? time_ago_in_words(chore.time_completed) : "Never" %></span></td>
