@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112001300) do
+ActiveRecord::Schema.define(:version => 20130112042254) do
 
   create_table "chores", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20130112001300) do
     t.text     "description"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.time     "time_reminded"
+    t.time     "time_completed"
   end
 
   add_index "chores", ["currentPerson_id"], :name => "index_chores_on_currentPerson_id"
