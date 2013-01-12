@@ -1,6 +1,6 @@
-desc "This task is called by the Heroku scheduler add-on"
+require "#{Rails.root}/app/helpers/text_helper"
 include TextHelper
 
 task :send_reminders => :environment do
-  TextHelper.send_reminders
+  send_reminders
 end
