@@ -47,7 +47,7 @@ module TextHelper
   		chore.time_reminded = Time.now
   		if chore.save
   			puts "saved time"
-	        message = "Did your do your " + chore.name + "yet? . Reply Y/N/O(Opt Out) and " + chore.id.to_s + " eg. Y " + chore.id.to_s
+	        message = "Did you " + chore.name + "yet? . Reply Y/N/O(Opt Out) and " + chore.id.to_s + " eg. Y " + chore.id.to_s
 	        sendtext(chore.currentPerson.phone, message)
     	end
     end
