@@ -14,6 +14,7 @@ class ChoresController < ApplicationController
   # GET /chores/1.json
   def show
     @chore = Chore.find(params[:id])
+    @daynames = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
     @people = {"monday" => nil,
                "tuesday" => nil,
                "wednesday" => nil,

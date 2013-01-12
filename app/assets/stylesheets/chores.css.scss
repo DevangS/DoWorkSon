@@ -37,3 +37,77 @@
   color: red;
   font-weight: bold;
 }
+
+.schedule
+{
+  margin-bottom: 40px;
+}
+
+.day
+{
+  height:120px;
+  width:100px;
+  background-color: rgb(255, 232, 108);
+  margin-top: 40px;
+  padding: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+  box-shadow: 3px 3px 5px #888;
+   position:relative;
+}
+
+.day:before {
+   content:"";
+   position:absolute;
+   top:0;
+   right:0;
+   border-width:0 16px 16px 0;
+   border-style:solid;
+   border-color:rgb(225,202,78) #FFF;
+   background:rgb(255, 232, 108);
+   -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+   -moz-box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+   box-shadow:0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+   display:block; width:0; /* Firefox 3.0 damage limitation */
+}
+
+
+.day .top
+{
+  margin-bottom: 20px;
+}
+
+.list {
+  font-size: 14px;
+  padding: 0 !important;
+  width: 150px;
+  font-family: courier, monospace;
+  border: 1px solid #dedede;
+  background-color: rgb(255, 232, 108);
+}
+.list li {
+  list-style: none;
+  border-bottom: 1px dotted #ccc;
+  text-indent: 25px;
+  height: auto;
+  padding: 10px;
+  text-transform: capitalize;
+}
+.lines {
+  border-left: 1px solid #ffaa9f;
+  border-right: 1px solid #ffaa9f;
+  width: 2px;
+  float: left;
+  height: 206px;
+  margin-left: 40px;
+}
+
+.day_num {
+  font-weight: bold;
+  font-size: 46px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.chore_desc {
+}

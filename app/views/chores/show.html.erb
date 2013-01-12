@@ -1,65 +1,77 @@
 <p id="notice"><%= notice %></p>
-<%= @people %>
-<p>
-  <b>Name:</b>
-  <%= @chore.name %>
-</p>
-
-<p>
-  <b>Time:</b>
-  <%= @chore.time %>
-</p>
-
-<p>
-  <b>Startdate:</b>
-  <%= @chore.start_date %>
-</p>
-
-<p>
-  <b>Monday:</b>
-  <%= @chore.monday %>
-</p>
-
-<p>
-  <b>Tuesday:</b>
-  <%= @chore.tuesday %>
-</p>
-
-<p>
-  <b>Wednesday:</b>
-  <%= @chore.wednesday %>
-</p>
-
-<p>
-  <b>Thursday:</b>
-  <%= @chore.thursday %>
-</p>
-
-<p>
-  <b>Friday:</b>
-  <%= @chore.friday %>
-</p>
-
-<p>
-  <b>Saturday:</b>
-  <%= @chore.saturday %>
-</p>
-
-<p>
-  <b>Sunday:</b>
-  <%= @chore.sunday %>
-</p>
-
-<p>
-  <b>Currentperson:</b>
-  <%= @chore.currentPerson %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @chore.description %>
-</p>
+  <h1><%= @chore.name %></h1>
+  <span><%= @chore.description %></span>
+<br/>
+<div class="container">
+  <div class="row schedule">
+    <div class="span1"></div>
+    <div class="span1 day note">
+      <div class="top">
+        <%= @daynames[Date.today.wday].capitalize %>
+        <div class="day_num"><%= Date.today.strftime("%d") %></div>
+      </div>
+      <div class="bottom">
+        <%= @people[@daynames[Date.today.wday]].name if @people[@daynames[Date.today.wday]] %>
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.strftime("%d") %></div>
+      </div>
+      <div class="bottom">
+        <%= @people[@daynames[Date.today.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.wday]] %>
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.tomorrow.strftime("%d") %></div>
+      </div>
+      <div class="bottom">
+        <%= @people[@daynames[Date.today.tomorrow.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.tomorrow.wday]] %>
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.tomorrow.tomorrow.strftime("%d") %></div>
+      </div>
+      <div class="bottom">
+        <%= @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.wday]] %>
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%d") %></div>
+      </div>
+      <div class="bottom">
+        <%= @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.wday]]%>
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%d") %></div>
+      </div>
+      <div class="bottom">
+        <%= @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday]] %>
+      </div>
+    </div>
+    <div class="span1 day">
+      <div class="top">
+        <%= @daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday%7].capitalize %>
+        <div class="day_num"><%= Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.strftime("%d") %></div>
+      </div>
+      <div class="bottom">
+        <%= @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday]].name if @people[@daynames[Date.today.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.tomorrow.wday]] %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <%= link_to 'Edit', edit_chore_path(@chore) %> |
+<%= link_to 'Delete', @chore, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', chores_path %>
