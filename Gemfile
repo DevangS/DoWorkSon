@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '1.9.2'
 gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
@@ -7,7 +7,7 @@ gem 'rails', '3.2.11'
 
 
 gem 'pg'
-
+gem 'heroku'
 
 
 # Gems used only for assets and not required

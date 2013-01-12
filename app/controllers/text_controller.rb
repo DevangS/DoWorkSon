@@ -1,5 +1,5 @@
 class TextController < ApplicationController
-
+  
   #handles recieving an SMS reply
   def index
     message_body = params["Body"]
@@ -61,6 +61,7 @@ class TextController < ApplicationController
       if chore(:time_completed => Time.now).save       
         alert_failure_to_complete(chore)
         chore.update_shift
+      end
     end
   end
 
