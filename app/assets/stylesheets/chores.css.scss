@@ -11,8 +11,15 @@
 .new_chores_title
 {
   text-align:center;
-  width: 500px;
+  width: 600px;
   padding-bottom: 30px;
+  font-size: 50px;
+}
+
+.chore_title
+{
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .strong
@@ -110,4 +117,5 @@
 }
 
 .chore_desc {
+  margin: 10px;
 }

@@ -24,3 +24,12 @@ body
   margin-right: auto;
   float: none;
 }
+
+.west {
+    font-family:westernFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:90px;
+}
+h1 {
+    font-family:westernFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:90px;
+}
