@@ -38,7 +38,7 @@ module TextHelper
   	end	
   end
 
-  def send_hourly_reminders
+  def send_reminders
     #send reminders to do chores
   	Chores.find_chores do |chore|
   		if chore(:time_reminded => Time.now).save
