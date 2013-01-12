@@ -6,5 +6,5 @@ task :update_feed => :environment do
 end
 
 task :send_reminders => :environment do
-  Text.send_reminders
+  TextHelper.send_reminders
 end
