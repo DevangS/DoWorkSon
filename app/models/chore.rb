@@ -5,7 +5,15 @@ class Chore < ActiveRecord::Base
   attr_accessible :people_attributes,:time_reminded,:time_completed, :description, :friday, :monday, :name, :saturday, :startDate, :sunday, :thursday, :time, :tuesday, :wednesday
   
   validates :name, :length => { :maximum =>30 }
+  validate :one_day_must_be_set
 
+def one_day_must_be_set
+  unless monday || tuesday || wednesday || thursday || friday || saturday || sunday
+    errors.add(:base, "Sup with not setting a day of the week, bro?")
+  end
+end
+
+  
   def opt_out_current
       #remove current person and set chore to next person
       person = self.currentPerson
