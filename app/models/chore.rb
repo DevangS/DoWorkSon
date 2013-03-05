@@ -24,7 +24,7 @@ class Chore < ActiveRecord::Base
   
  
     def at_least_a_person
-        unless not people.empty?
+        if people.empty?
             errors.add(:base, "Gotta have someone doing the chores")
         end
     end
